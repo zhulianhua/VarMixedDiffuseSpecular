@@ -53,7 +53,7 @@ template<class CloudType>
 void Foam::VarMixedDiffuseSpecular<CloudType>::correct
 (
     typename CloudType::parcelType& p,
-    wallPolyPatch& wpp
+    const wallPolyPatch& wpp
 )
 {
     vector& U = p.U();
@@ -79,7 +79,8 @@ void Foam::VarMixedDiffuseSpecular<CloudType>::correct
 
     alphaFixedValueFvPatchField<scalar>& Tpatch =
         refCast<alphaFixedValueFvPatchField<scalar> >
-        (cloud.boundaryT().boundaryField()[wppIndex]); //DEBUG
+        ( const_cast<fvPatchField<scalar>& >(cloud.boundaryT().boundaryField()[wppIndex])); //DEBUG
+        //(cloud.boundaryT().boundaryField()[wppIndex]); //DEBUG
 
     scalar diffuseFraction = Tpatch.alpha();
 

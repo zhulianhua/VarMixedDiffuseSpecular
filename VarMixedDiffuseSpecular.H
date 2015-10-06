@@ -83,7 +83,7 @@ public:
         virtual void correct
         (
             typename CloudType::parcelType& p,
-            wallPolyPatch& wpp
+            const wallPolyPatch& wpp
         );
 };
 
