@@ -32,16 +32,16 @@ namespace Foam
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-//template<class Type>
-//alphaFixedValueFvPatchField<Type>::alphaFixedValueFvPatchField
-//(
-    //const fvPatch& p,
-    //const DimensionedField<Type, volMesh>& iF,
+template<class Type>
+alphaFixedValueFvPatchField<Type>::alphaFixedValueFvPatchField
+(
+    const fvPatch& p,
+    const DimensionedField<Type, volMesh>& iF
     //const scalar s
-//)
-//:
-    //fvPatchField<Type>(p, iF), alpha_(s)
-//{}
+)
+:
+    fvPatchField<Type>(p, iF), alpha_(1.0)
+{}
 
 
 template<class Type>
@@ -52,8 +52,8 @@ alphaFixedValueFvPatchField<Type>::alphaFixedValueFvPatchField
     const dictionary& dict
 )
 :
-    fvPatchField<Type>(p, iF, dict, true)
-    //alpha_(dict.lookupOrDefault("alpha", 0.0))
+    fvPatchField<Type>(p, iF, dict, true),
+    alpha_(dict.lookupOrDefault("alpha", 0.0))
 {}
 
 
