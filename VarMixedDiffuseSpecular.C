@@ -35,8 +35,7 @@ Foam::VarMixedDiffuseSpecular<CloudType>::VarMixedDiffuseSpecular
     CloudType& cloud
 )
 :
-    WallInteractionModel<CloudType>(dict, cloud, typeName),
-    diffuseFraction_(readScalar(this->coeffDict().lookup("diffuseFraction")))
+    WallInteractionModel<CloudType>(dict, cloud, typeName)
 {}
 
 

@@ -53,10 +53,6 @@ class VarMixedDiffuseSpecular
 {
     // Private data
 
-        //- Fraction of wall interactions that are diffuse
-        scalar diffuseFraction_;
-
-
 public:
 
     //- Runtime type information
