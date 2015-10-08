@@ -1,4 +1,3 @@
 makeVarMixedDiffuseSpecular.C
-alphaFixedValue/alphaFixedValueFvPatchFields.C
 
 LIB = $(FOAM_USER_LIBBIN)/libVarDsmc

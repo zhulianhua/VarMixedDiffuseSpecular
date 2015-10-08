@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "VarMixedDiffuseSpecular.H"
-#include "alphaFixedValue/alphaFixedValueFvPatchField.H"
+//#include "alphaFixedValue/alphaFixedValueFvPatchField.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -76,12 +76,9 @@ void Foam::VarMixedDiffuseSpecular<CloudType>::correct
     Random& rndGen(cloud.rndGen());
 
 
-    alphaFixedValueFvPatchField<scalar>& Tpatch =
-        refCast<alphaFixedValueFvPatchField<scalar> >
-        ( const_cast<fvPatchField<scalar>& >(cloud.boundaryT().boundaryField()[wppIndex])); //DEBUG
-        //(cloud.boundaryT().boundaryField()[wppIndex]); //DEBUG
-
-    scalar diffuseFraction = Tpatch.alpha();
+    scalar diffuseFraction = 1.0;
+    if(wppIndex == cloud.mesh().boundaryMesh().findPatchID("vertical"))
+        diffuseFraction = 0.0;
 
     if (diffuseFraction > rndGen.scalar01())
     { // Diffuse reflection
